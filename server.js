@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const morgan = require("morgan")
+// const { body, validationResult } = require('express-validator');
 
 const yolo = 9001
 
@@ -8,6 +9,14 @@ app.use(express.json())
 app.use(morgan("dev"))
 
 app.put("/calculator/add/:num1/:num2", (request, response) => {
+    // //validation:
+    // "/calculator",
+    // //need more below
+    // body("num1").isLength({min: 0})
+    // const errors = validationResult(request)
+    // if (!errors.isEmpty()) {
+    //     return res.status(400).json({ errors: errors.array() });
+    //   }
     // You can use the unary plus operator, i.e. const sum = +request.params.num1 + +request.params.num2, but for readability we'll do something else:
     const sum = Number(request.params.num1) + Number(request.params.num2)
     response.send(sum.toString())
